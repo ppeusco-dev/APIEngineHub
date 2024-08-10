@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    weather_engine (0.1.0)
+    currency_converter_engine (0.1.0)
       rails (>= 7.2.0)
 
 GEM
@@ -302,6 +302,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  currency_converter_engine!
   dotenv-rails (~> 3.1)
   faraday
   faraday-http
@@ -309,7 +310,6 @@ DEPENDENCIES
   puma
   rubocop-rails-omakase
   sprockets-rails
-  weather_engine!
 
 BUNDLED WITH
    2.5.17

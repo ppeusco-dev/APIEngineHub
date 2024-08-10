@@ -19,3 +19,5 @@ gem 'faraday-http'
 gem 'oj'
 
 
+
+gem "dotenv-rails", "~> 3.1"
