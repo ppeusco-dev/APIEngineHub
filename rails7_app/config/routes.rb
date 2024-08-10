@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-   mount WeatherEngine::Engine, at: '/weather'
-   mount CurrencyEngine::Engine => "/currency"
+  mount WeatherEngine::Engine, at: '/weather'
+  mount CurrencyEngine::Engine at: '/currency'
+  mount NewsEngine::Engine, at: '/news_feed'
 end

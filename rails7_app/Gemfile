@@ -47,6 +47,6 @@ group :development do
 end
 
 gem 'weather_engine', path: '../engines/weather_engine'
-gem 'currency_engine', path: '../engines/currency_engine'
-
+gem 'currency_engine', path: '../engines/currency_converter_engine'
+gem 'news_feed_engine', path: '../engines/news_feed_engine'
 
