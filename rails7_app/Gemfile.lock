@@ -1,3 +1,9 @@
+PATH
+  remote: ../engines/weather_engine
+  specs:
+    weather_engine (0.1.0)
+      rails (>= 7.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -267,6 +273,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  weather_engine!
   web-console
 
 BUNDLED WITH
