@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
    mount WeatherEngine::Engine, at: '/weather'
+   mount CurrencyEngine::Engine => "/currency"
 end
