@@ -1,4 +1,4 @@
-module CurrencyEngine
+module CurrencyConverterEngine
   class ConversionService
     BASE_URL = 'https://api.exchangeratesapi.io/latest'
 
