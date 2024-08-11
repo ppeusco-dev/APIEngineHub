@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   mount WeatherEngine::Engine, at: '/weather'
-  mount CurrencyEngine::Engine at: '/currency'
-  mount NewsEngine::Engine, at: '/news_feed'
+  mount NewsFeedEngine::Engine, at: '/news_feed'
+  mount CurrencyConverterEngine::Engine, at: '/currency_converter'
 end

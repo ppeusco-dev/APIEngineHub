@@ -5,9 +5,9 @@ Gem::Specification.new do |spec|
   spec.version     = NewsFeedEngine::VERSION
   spec.authors     = [ "Pablo Peuscovich" ]
   spec.email       = [ "ppeusco@gmail.com" ]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of NewsFeedEngine."
-  spec.description = "TODO: Description of NewsFeedEngine."
+  spec.homepage    = 'http://example.com'
+  spec.summary     = "Engine for fetching news using public APIs."
+  spec.description = "This engine provides news fetching services by interacting with external APIs like NewsAPI, allowing you to retrieve top headlines and other news-related data."
   spec.license     = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"
@@ -15,8 +15,8 @@ Gem::Specification.new do |spec|
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "TODO: Put your gem's public repo URL here."
-  spec.metadata["changelog_uri"] = "TODO: Put your gem's CHANGELOG.md URL here."
+  spec.metadata['source_code_uri'] = 'http://example.com'
+  spec.metadata['changelog_uri'] = 'http://example.com'
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]

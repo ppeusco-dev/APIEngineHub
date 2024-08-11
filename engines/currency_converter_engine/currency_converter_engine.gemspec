@@ -6,8 +6,6 @@ Gem::Specification.new do |spec|
   spec.authors     = [ "Pablo Peuscovich" ]
   spec.email       = [ "ppeusco@gmail.com" ]
   spec.homepage    = 'http://example.com'
-  spec.summary     = "TODO: Summary of CurrencyConverterEngine."
-  spec.description = "TODO: Description of CurrencyConverterEngine."
   spec.license     = "MIT"
 
   spec.summary     = "Engine for currency conversion using public APIs."
