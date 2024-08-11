@@ -1,4 +1,12 @@
 PATH
+  remote: ../../http_wrapper
+  specs:
+    http_wrapper (0.1.0)
+      faraday (~> 2.0)
+      httpx (~> 0.18.0)
+      oj (~> 3.13)
+
+PATH
   remote: .
   specs:
     weather_engine (0.1.0)
@@ -77,8 +85,6 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
-    addressable (2.8.7)
-      public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.2)
     base64 (0.2.0)
     bigdecimal (3.1.8)
@@ -90,7 +96,6 @@ GEM
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
-    domain_name (0.6.20240107)
     dotenv (3.1.2)
     dotenv-rails (3.1.2)
       dotenv (= 3.1.2)
@@ -100,35 +105,13 @@ GEM
     faraday (2.10.1)
       faraday-net_http (>= 2.0, < 3.2)
       logger
-    faraday-http (2.0.1)
-      faraday (~> 2.5)
-      http (>= 4.0, < 6)
     faraday-net_http (3.1.1)
       net-http
-    ffi (1.17.0-aarch64-linux-gnu)
-    ffi (1.17.0-aarch64-linux-musl)
-    ffi (1.17.0-arm-linux-gnu)
-    ffi (1.17.0-arm-linux-musl)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86-linux-gnu)
-    ffi (1.17.0-x86-linux-musl)
-    ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
-    ffi (1.17.0-x86_64-linux-musl)
-    ffi-compiler (1.3.2)
-      ffi (>= 1.15.5)
-      rake
     globalid (1.2.1)
       activesupport (>= 6.1)
-    http (5.2.0)
-      addressable (~> 2.8)
-      base64 (~> 0.1)
-      http-cookie (~> 1.0)
-      http-form_data (~> 2.2)
-      llhttp-ffi (~> 0.5.0)
-    http-cookie (1.0.6)
-      domain_name (~> 0.5)
-    http-form_data (2.3.0)
+    http-2-next (1.0.3)
+    httpx (0.18.7)
+      http-2-next (>= 0.4.1)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -137,9 +120,6 @@ GEM
       reline (>= 0.4.2)
     json (2.7.2)
     language_server-protocol (3.17.0.3)
-    llhttp-ffi (0.5.0)
-      ffi-compiler (~> 1.0)
-      rake (~> 13.0)
     logger (1.6.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -180,13 +160,12 @@ GEM
       bigdecimal (>= 3.0)
       ostruct (>= 0.2)
     ostruct (0.6.0)
-    parallel (1.26.1)
+    parallel (1.26.2)
     parser (3.3.4.2)
       ast (~> 2.4.1)
       racc
     psych (5.1.2)
       stringio
-    public_suffix (6.0.1)
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.8.1)
@@ -307,9 +286,7 @@ PLATFORMS
 DEPENDENCIES
   debug (>= 1.0.0)
   dotenv-rails (~> 3.1)
-  faraday
-  faraday-http
-  oj
+  http_wrapper!
   puma
   rubocop-rails-omakase
   sprockets-rails

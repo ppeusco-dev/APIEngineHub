@@ -4,10 +4,7 @@ module CurrencyConverterEngine
 
     def initialize(api_key)
       @api_key = api_key
-      @connection = Faraday.new(url: BASE_URL) do |faraday|
-        faraday.headers["Content-Type"] = "application/json"
-        faraday.adapter :http
-      end
+      @client = HttpWrapper::Client.new(BASE_URL)
     end
 
     def convert(from_currency, to_currencies, amount)
@@ -17,7 +14,7 @@ module CurrencyConverterEngine
         access_key: @api_key
       }
 
-      response = @connection.get("", query_params)
+      response = @client.get("", query_params)
       if response.success?
         rates = Oj.load(response.body)["rates"]
         conversions = to_currencies.each_with_object({}) do |currency, result|

@@ -4,10 +4,7 @@ module NewsFeedEngine
 
     def initialize(api_key)
       @api_key = api_key
-      @connection = Faraday.new(url: BASE_URL) do |faraday|
-        faraday.headers["Content-Type"] = "application/json"
-        faraday.adapter :http
-      end
+      @client = HttpWrapper::Client.new(BASE_URL)
     end
 
     def fetch_top_headlines(country = nil)
@@ -15,9 +12,9 @@ module NewsFeedEngine
       query_params = {
         country: country,
         apiKey: @api_key
-      }.compact # Elimina valores nil
+      }.compact
 
-      response = @connection.get("top-headlines", query_params)
+      response = @client.get("top-headlines", query_params)
       if response.success?
         Oj.load(response.body)
       else
