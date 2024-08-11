@@ -1,4 +1,16 @@
 PATH
+  remote: ../engines/currency_converter_engine
+  specs:
+    currency_converter_engine (0.1.0)
+      rails (>= 7.2.0)
+
+PATH
+  remote: ../engines/news_feed_engine
+  specs:
+    news_feed_engine (0.1.0)
+      rails (>= 7.2.0)
+
+PATH
   remote: ../engines/weather_engine
   specs:
     weather_engine (0.1.0)
@@ -77,6 +89,8 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
+    addressable (2.8.7)
+      public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.2)
     base64 (0.2.0)
     bigdecimal (3.1.8)
@@ -93,11 +107,37 @@ GEM
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
+    domain_name (0.6.20240107)
+    dotenv (3.1.2)
+    dotenv-rails (3.1.2)
+      dotenv (= 3.1.2)
+      railties (>= 6.1)
     drb (2.2.1)
     error_highlight (0.6.0)
     erubi (1.13.0)
+    faraday (2.10.1)
+      faraday-net_http (>= 2.0, < 3.2)
+      logger
+    faraday-http (2.0.1)
+      faraday (~> 2.5)
+      http (>= 4.0, < 6)
+    faraday-net_http (3.1.1)
+      net-http
+    ffi (1.17.0-x86_64-linux-gnu)
+    ffi-compiler (1.3.2)
+      ffi (>= 1.15.5)
+      rake
     globalid (1.2.1)
       activesupport (>= 6.1)
+    http (5.2.0)
+      addressable (~> 2.8)
+      base64 (~> 0.1)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      llhttp-ffi (~> 0.5.0)
+    http-cookie (1.0.6)
+      domain_name (~> 0.5)
+    http-form_data (2.3.0)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     importmap-rails (2.0.1)
@@ -113,6 +153,9 @@ GEM
       activesupport (>= 5.0.0)
     json (2.7.2)
     language_server-protocol (3.17.0.3)
+    llhttp-ffi (0.5.0)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
     logger (1.6.0)
     loofah (2.22.0)
       crass (~> 1.0.2)
@@ -126,6 +169,8 @@ GEM
     mini_mime (1.1.5)
     minitest (5.24.1)
     msgpack (1.7.2)
+    net-http (0.4.1)
+      uri
     net-imap (0.4.14)
       date
       net-protocol
@@ -138,12 +183,17 @@ GEM
     nio4r (2.7.3)
     nokogiri (1.16.7-x86_64-linux)
       racc (~> 1.4)
+    oj (3.16.5)
+      bigdecimal (>= 3.0)
+      ostruct (>= 0.2)
+    ostruct (0.6.0)
     parallel (1.26.1)
     parser (3.3.4.2)
       ast (~> 2.4.1)
       racc
     psych (5.1.2)
       stringio
+    public_suffix (6.0.1)
     puma (6.4.2)
       nio4r (~> 2.0)
     racc (1.8.1)
@@ -244,6 +294,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
+    uri (0.13.0)
     useragent (0.16.10)
     web-console (4.2.1)
       actionview (>= 6.0.0)
@@ -262,10 +313,16 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   brakeman
+  currency_converter_engine!
   debug
+  dotenv-rails
   error_highlight (>= 0.4.0)
+  faraday
+  faraday-http
   importmap-rails
   jbuilder
+  news_feed_engine!
+  oj
   puma (>= 5.0)
   rails (~> 7.2.0)
   rubocop-rails-omakase

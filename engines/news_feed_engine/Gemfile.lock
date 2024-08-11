@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    weather_engine (0.1.0)
+    news_feed_engine (0.1.0)
       rails (>= 7.2.0)
 
 GEM
@@ -309,11 +309,11 @@ DEPENDENCIES
   dotenv-rails (~> 3.1)
   faraday
   faraday-http
+  news_feed_engine!
   oj
   puma
   rubocop-rails-omakase
   sprockets-rails
-  weather_engine!
 
 BUNDLED WITH
    2.5.17
