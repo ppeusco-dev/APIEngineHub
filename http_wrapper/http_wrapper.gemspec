@@ -19,11 +19,15 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/username/http_wrapper"
   spec.metadata["changelog_uri"] = "https://github.com/username/http_wrapper/blob/main/CHANGELOG.md"
 
-  spec.files = Dir.glob("**/*").reject { |f| f.start_with?("test/", "spec/", "features/", ".git/", ".github/") }
+  spec.files = Dir.glob("**/*").reject do |f|
+    f == "http_wrapper.gemspec" || f.end_with?(".gem") || f.start_with?("test/", "spec/", "features/", ".git/", ".github/")
+  end
+  
   spec.bindir = "exe"
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency 'faraday', '~> 2.0'
   spec.add_runtime_dependency 'oj', '~> 3.13'
+  spec.add_runtime_dependency 'httpx', '~> 0.18.0'
 end

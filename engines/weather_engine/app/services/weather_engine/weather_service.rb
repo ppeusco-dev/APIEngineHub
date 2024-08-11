@@ -4,10 +4,7 @@ module WeatherEngine
 
     def initialize(api_key)
       @api_key = api_key
-      @connection = Faraday.new(url: BASE_URL) do |faraday|
-        faraday.headers["Content-Type"] = "application/json"
-        faraday.adapter :http
-      end
+      @client = HttpWrapper::Client.new(BASE_URL)
     end
 
     def fetch_weather(city)
@@ -16,7 +13,7 @@ module WeatherEngine
         appid: @api_key
       }.compact
 
-      response = @connection.get("weather", query_params)
+      response = @client.get("weather", query_params)
 
       if response.success?
         Oj.load(response.body)
@@ -26,3 +23,5 @@ module WeatherEngine
     end
   end
 end
+
+
