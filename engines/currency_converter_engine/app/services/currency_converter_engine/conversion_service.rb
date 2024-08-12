@@ -1,28 +1,33 @@
 module CurrencyConverterEngine
-  class ConversionService
+  class ConversionService < SharedServices::ApplicationService
     BASE_URL = "https://api.exchangeratesapi.io/latest"
 
-    def initialize(api_key)
-      @api_key = api_key
+    def initialize(query_params_builder)
+      @query_params_builder = query_params_builder
       @client = HttpWrapper::Client.new(BASE_URL)
     end
 
-    def convert(from_currency, to_currencies, amount)
-      query_params = {
-        base: from_currency,
-        symbols: to_currencies.join(","), # Convierte el array en una cadena separada por comas
-        access_key: @api_key
-      }
+    def call
+      query_params = @query_params_builder.call
 
       response = @client.get("", query_params)
-      if response.success?
-        rates = Oj.load(response.body)["rates"]
-        conversions = to_currencies.each_with_object({}) do |currency, result|
-          result[currency] = amount * rates[currency] if rates[currency]
-        end
-        { amount: amount, from_currency: from_currency, conversions: conversions }
-      else
-        raise "Error fetching conversion rates: #{response.status}"
+      return failure_response("Error fetching conversion rates: #{response.status}") unless response.success?
+
+      rates = parse_rates(response.body)
+      conversions = convert_amounts(@query_params_builder.amount, @query_params_builder.to_currencies, rates)
+
+      success_response({ amount: @query_params_builder.amount, from_currency: @query_params_builder.from_currency, conversions: conversions })
+    end
+
+    private
+
+    def parse_rates(response_body)
+      Oj.load(response_body)["rates"]
+    end
+
+    def convert_amounts(amount, to_currencies, rates)
+      to_currencies.each_with_object({}) do |currency, result|
+        result[currency] = amount * rates[currency] if rates[currency]
       end
     end
   end
