@@ -6,6 +6,11 @@ PATH
       httpx (~> 0.18.0)
       oj (~> 3.13)
 
+PATH
+  remote: ../shared_services
+  specs:
+    shared_services (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -205,6 +210,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.8)
   sass-rails (~> 5.0)
+  shared_services!
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)

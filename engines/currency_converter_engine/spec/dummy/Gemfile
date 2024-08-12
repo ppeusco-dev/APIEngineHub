@@ -1,0 +1,8 @@
+source 'https://rubygems.org'
+
+gem 'rails', '7.2.0'
+gem 'sqlite3', '~> 1.4'
+gem 'currency_converter_engine', path: '../../..'
+gem 'shared_services', path: '../../../..'
+
+
