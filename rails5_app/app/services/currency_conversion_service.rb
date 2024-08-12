@@ -1,14 +1,11 @@
-# app/services/currency_conversion_service.rb
-
-class CurrencyConversionService
+class CurrencyConversionService < SharedServices::ApplicationService
   BASE_URL = 'http://localhost:3000/currency_converter/api/v1/'
-
 
   def initialize(http_client: HttpWrapper::Client.new(BASE_URL))
     @http_client = http_client
   end
 
-  def convert(from_currency, to_currency, amount)
+  def call(from_currency, to_currency, amount)
     query_params = {
       from_currency: from_currency,
       to_currency: to_currency,
@@ -18,9 +15,10 @@ class CurrencyConversionService
     response = @http_client.get('convert', query_params)
 
     if response['error']
-      raise "Error fetching conversion rate: #{response['error']}"
+      failure_response(response['error'])
     else
-      response
+      success_response(response)
     end
   end
 end
+
